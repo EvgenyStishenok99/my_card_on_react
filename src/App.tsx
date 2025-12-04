@@ -56,7 +56,7 @@ const SecondButton = styled.button`
   font-weight: 700;
   font-size: 10px;
   line-height: 200%;
-  color: #4e81fe;`
+  color: #4e71fe;`
 
 
 function App() {
