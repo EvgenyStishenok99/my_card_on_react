@@ -1,25 +1,39 @@
 import React from 'react';
 // import logo from './logo.svg';
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 import './App.css';
 import logo from './images/Rectangle-1.png'
 
 
+
 const AppContainer = styled.div`
+  border-radius: 10px;
   width: 300px;
-    height: 500px;
+  height: 350px;
+  
+  margin: 200px auto;
+  
+  background-color: aliceblue;
+ 
+ 
 `;
 
+const ContentContainer = styled.div`
+  padding: 10px 10px 22px 10px;
+`
+
 const CardImage = styled.img`
-  margin: 10px 10px 20px 10px;
+ 
+  margin-bottom: 20px;
 `;
 
 const Title = styled.div`
   font-weight: 700;
   font-size: 16px;
   color: #000;
-  margin-bottom: 20px;
-  margin-left: 20px;
+ 
+  margin: 0 10px 20px 10px;
+  
 `;
 
 const MainText = styled.div`
@@ -27,42 +41,48 @@ const MainText = styled.div`
   font-size: 12px;
   line-height: 167%;
   color: #abb3ba;
-  margin: 20px ;
-`;
-
-const ButtonsContainer = styled.div`
+  margin: 0 10px 20px 10px;
   
 `;
 
-const FirstButton = styled.button`
+const ButtonsContainer = styled.div`
+  margin: 0 10px 20px 10px;
+  display: flex;
+  gap: 12px;
+`;
+
+const Button = styled.button<{blue?: string}>`
   border-radius: 5px;
-  border: none;
   width: 86px;
   height: 30px;
-  background: #4e71fe;
   font-weight: 700;
   font-size: 10px;
   line-height: 200%;
-  color: #fff;
-  margin: 0 12px 22px 20px;`
+  
+  ${props => {
+    if (props.blue) {
+      return css`
+        border: none;
+        background: #4e71fe;
+        color: #fff;
+      `
+    }
+    
+    return css`
+      border-color: #4e71fe;
+      background: #fff;
+      color: #4e71fe;
+    `
+  }}
+`
 
-const SecondButton = styled.button`
-  border-radius: 5px;
-  border-color: #4e71fe;
-  width: 86px;
-  height: 30px;
-  background: #fff;
 
-  font-weight: 700;
-  font-size: 10px;
-  line-height: 200%;
-  color: #4e71fe;`
 
 
 function App() {
   return (
     <AppContainer>
-
+      <ContentContainer>
         <CardImage
           src={logo}
           alt="картинка"
@@ -70,10 +90,10 @@ function App() {
         <Title>Headline</Title>
         <MainText>Faucibus. Faucibus. Sit sit sapien sit tempusrisu ut. Sit molestie ornare in venen.</MainText>
         <ButtonsContainer>
-          <FirstButton>See more</FirstButton>
-          <SecondButton>Save</SecondButton>
+          <Button blue={'true'}>See more</Button>
+          <Button>Save</Button>
         </ButtonsContainer>
-
+    </ContentContainer>
     </AppContainer>
   );
 }
